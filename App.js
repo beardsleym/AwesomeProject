@@ -13,14 +13,16 @@ function MyTabs({ dates, image, submitHandler, navigation }) {
     <Tab.Navigator
       screenOptions={{
         tabBarStyle: { backgroundColor: "white" },
+        tabBarActiveTintColor: "tomato",
+        tabBarInactiveTintColor: "gray",
       }}
     >
       <Tab.Screen
         name="Home"
         options={{
           tabBarLabel: "Home",
-          tabBarIcon: () => (
-            <MaterialIcons name="home" size={24} className="" />
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons name="home" size={24} className="" color={color} />
           ),
         }}
       >
@@ -30,7 +32,9 @@ function MyTabs({ dates, image, submitHandler, navigation }) {
         name="Add"
         options={{
           tabBarLabel: "Add",
-          tabBarIcon: () => <MaterialIcons name="add" size={24} className="" />,
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons name="add" size={24} className="" color={color} />
+          ),
         }}
       >
         {(props) => (

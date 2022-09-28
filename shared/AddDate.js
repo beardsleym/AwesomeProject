@@ -16,9 +16,8 @@ import * as ImagePicker from "expo-image-picker";
 
 const AddDate = ({ submitHandler }) => {
   const [title, setTitle] = useState("");
-  // const [date, setDate] = useState("");
-
   const [date, setDate] = useState(new Date());
+  const [image, setImage] = useState(null);
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
@@ -42,11 +41,10 @@ const AddDate = ({ submitHandler }) => {
     if (title.length && date && image.length) {
       submitHandler(title, date, image);
       setTitle("");
+      setImage(null);
       setDate(new Date());
     }
   };
-
-  const [image, setImage] = useState(null);
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
