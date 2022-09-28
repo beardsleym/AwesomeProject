@@ -37,13 +37,7 @@ function MyTabs({ dates, image, submitHandler, navigation }) {
           ),
         }}
       >
-        {(props) => (
-          <Add
-            {...props}
-            submitHandler={submitHandler}
-            navigation={navigation}
-          />
-        )}
+        {(props) => <Add {...props} submitHandler={submitHandler} />}
       </Tab.Screen>
     </Tab.Navigator>
   );

@@ -14,7 +14,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import * as ImagePicker from "expo-image-picker";
 
-const AddDate = ({ submitHandler }) => {
+const AddDate = ({ submitHandler, navigation }) => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState(new Date());
   const [image, setImage] = useState(null);
@@ -40,6 +40,7 @@ const AddDate = ({ submitHandler }) => {
   const handlePress = () => {
     if (title.length && date && image.length) {
       submitHandler(title, date, image);
+      navigation.navigate("Home");
       setTitle("");
       setImage(null);
       setDate(new Date());
