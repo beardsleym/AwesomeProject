@@ -16,12 +16,13 @@ import {
 import tw from "twrnc";
 import Header from "./shared/Header";
 import Home from "./screens/Home";
+import Add from "./screens/Add";
 import { NavigationContainer } from "@react-navigation/native";
 import { DrawerContentScrollView } from "@react-navigation/drawer";
 
 const Tab = createBottomTabNavigator();
 
-function MyTabs({ dates, image }) {
+function MyTabs({ dates, image, submitHandler, navigation }) {
   return (
     <Tab.Navigator>
       <Tab.Screen
@@ -36,15 +37,22 @@ function MyTabs({ dates, image }) {
         {(props) => <Home {...props} dates={dates} image={image} />}
       </Tab.Screen>
       <Tab.Screen
-        name="Settings"
-        component={Home}
+        name="Add"
         options={{
           tabBarLabel: "Add",
           tabBarIcon: () => (
             <MaterialIcons name="add" size={24} style={tw`text-gray-700`} />
           ),
         }}
-      />
+      >
+        {(props) => (
+          <Add
+            {...props}
+            submitHandler={submitHandler}
+            navigation={navigation}
+          />
+        )}
+      </Tab.Screen>
     </Tab.Navigator>
   );
 }
@@ -80,7 +88,7 @@ const data = [
   },
   {
     id: 5,
-    title: "Ollie's B'day",
+    title: "Olivia's B'day",
     date: "2022-04-12",
     img: require("./assets/showcase-stills.jpg"),
   },
@@ -127,7 +135,7 @@ export default function App() {
           />
         </View> */}
       {/* </View> */}
-      <MyTabs dates={dates} image={image} />
+      <MyTabs dates={dates} image={image} submitHandler={submitHandler} />
     </NavigationContainer>
   );
 }

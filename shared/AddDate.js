@@ -11,15 +11,39 @@ import {
 } from "react-native";
 import tw from "twrnc";
 import { MaterialIcons } from "@expo/vector-icons";
+import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 
-const AddDate = ({ submitHandler, handleVisibility }) => {
+const AddDate = ({ submitHandler }) => {
   const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
+  // const [date, setDate] = useState("");
+
+  const [date, setDate] = useState(new Date(1598051730000));
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate;
+    setDate(currentDate);
+  };
+
+  const showMode = (currentMode) => {
+    DateTimePickerAndroid.open({
+      value: date,
+      onChange,
+      mode: currentMode,
+      is24Hour: true,
+    });
+  };
+
+  const showDatepicker = () => {
+    showMode("date");
+  };
+
+  const showTimepicker = () => {
+    showMode("time");
+  };
 
   const handlePress = () => {
     if (title.length && date.length) {
       submitHandler(title, date);
-      handleVisibility();
       setTitle("");
       setDate("");
     }
@@ -28,12 +52,12 @@ const AddDate = ({ submitHandler, handleVisibility }) => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={tw`p-8`}>
-        <MaterialIcons
+        {/* <MaterialIcons
           style={tw`text-white mb-4 self-end bg-purple-600 rounded-full`}
           name="close"
           size={36}
           onPress={handleVisibility}
-        />
+        /> */}
         {/* Inputs */}
         <View>
           <TextInput
@@ -41,16 +65,21 @@ const AddDate = ({ submitHandler, handleVisibility }) => {
             placeholder="Event Title"
             onChangeText={(value) => setTitle(value)}
           ></TextInput>
-          <TextInput
+          {/* <TextInput
             style={tw`border my-3 bg-gray-100 text-gray-700 rounded-xl p-2`}
             placeholder="Date: YYYY-MM-DD"
-            onChangeText={(value) => setDate(value)}
             keyboardType="numeric"
-          ></TextInput>
+            value={date.toLocaleString()}
+          ></TextInput> */}
+        </View>
+        <View style={tw`text-xs shadow-lg mb-2`}>
+          <Button onPress={showDatepicker} title={date.toLocaleString()} />
+          {/* <Button onPress={showTimepicker} title="Show time picker!" /> */}
+          {/* <Text>selected: {date.toLocaleString()}</Text> */}
         </View>
         {/* Button */}
-        <View style={tw`w-25 text-xs shadow-lg mb-16`}>
-          <Button title="Add date" color="hotpink" onPress={handlePress} />
+        <View style={tw`w-32 text-xs shadow-lg mb-16`}>
+          <Button title="Create event" color="hotpink" onPress={handlePress} />
         </View>
       </View>
     </TouchableWithoutFeedback>
