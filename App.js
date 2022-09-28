@@ -1,9 +1,7 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import Header from "./shared/Header";
 import Home from "./screens/Home";
 import Add from "./screens/Add";
 import { NavigationContainer } from "@react-navigation/native";
@@ -14,7 +12,7 @@ function MyTabs({ dates, image, submitHandler, navigation }) {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarStyle: { backgroundColor: "grey" },
+        tabBarStyle: { backgroundColor: "white" },
       }}
     >
       <Tab.Screen
