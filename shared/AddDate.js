@@ -39,10 +39,10 @@ const AddDate = ({ submitHandler }) => {
   };
 
   const handlePress = () => {
-    if (title.length && date.length) {
+    if (title.length && date) {
       submitHandler(title, date);
       setTitle("");
-      setDate("");
+      setDate(new Date());
     }
   };
 
@@ -74,40 +74,39 @@ const AddDate = ({ submitHandler }) => {
           onPress={handleVisibility}
         /> */}
         {/* Inputs */}
-        <View>
-          <TextInput
-            className=" my-3 w-full bg-gray-100 text-gray-700 rounded-xl p-2"
-            placeholder="Event Title"
-            onChangeText={(value) => setTitle(value)}
-          ></TextInput>
-          {/* <TextInput
-            className="border my-3 bg-gray-100 text-gray-700 rounded-xl p-2"
-            placeholder="Date: YYYY-MM-DD"
-            keyboardType="numeric"
-            value={date.toLocaleString()}
-          ></TextInput> */}
-        </View>
-        <View className="text-xs shadow-lg mb-2">
-          <Button onPress={showDatepicker} title={date.toLocaleString()} />
-          {/* <Button onPress={showTimepicker} title="Show time picker!" /> */}
-          {/* <Text>selected: {date.toLocaleString()}</Text> */}
-        </View>
-        {/* IMAGE PICKER */}
-        <View className="text-xs shadow-lg mb-2">
-          {/* <Button title="Pick an image from camera roll" onPress={pickImage}> */}
-          <MaterialIcons
-            className="text-white mb-4 bg-purple-500 text-center rounded-full"
-            name="image"
-            size={36}
-            onPress={pickImage}
-          />
-          {/* </Button> */}
-
-          {image && <Image source={{ uri: image }} className="w-full h-42" />}
-        </View>
-        {/* Button */}
-        <View className="w-32 text-xs shadow-lg mb-16">
-          <Button title="Create event" color="hotpink" onPress={handlePress} />
+        <View className="space-y-3">
+          <View>
+            <TextInput
+              className="w-full bg-gray-100 text-gray-700 rounded-xl p-2"
+              placeholder="Event Title"
+              onChangeText={(value) => setTitle(value)}
+            ></TextInput>
+          </View>
+          {/* DATE PICKER */}
+          <View>
+            <Button onPress={showDatepicker} title={date.toLocaleString()} />
+          </View>
+          {/* IMAGE PICKER */}
+          <View className=" bg-purple-500 rounded-full h-16 w-16">
+            <MaterialIcons
+              className=""
+              name="image"
+              size={36}
+              onPress={pickImage}
+            />
+          </View>
+          {/* Image Preview*/}
+          <View className="text-xs shadow-lg">
+            {image && <Image source={{ uri: image }} className="w-full h-32" />}
+          </View>
+          {/* Submit Button */}
+          <View className="w-32 text-xs shadow-lg">
+            <Button
+              title="Create event"
+              color="hotpink"
+              onPress={handlePress}
+            />
+          </View>
         </View>
       </View>
     </TouchableWithoutFeedback>

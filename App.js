@@ -1,23 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-// import { StyleSheet, View, Button, Modal, FlatList, Alert, Input, TextInput } from 'react-native';
-import { useForm, Controller } from "react-hook-form";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  FlatList,
-  TouchableOpacity,
-} from "react-native";
 import Header from "./shared/Header";
 import Home from "./screens/Home";
 import Add from "./screens/Add";
 import { NavigationContainer } from "@react-navigation/native";
-import { DrawerContentScrollView } from "@react-navigation/drawer";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,7 +22,7 @@ function MyTabs({ dates, image, submitHandler, navigation }) {
         options={{
           tabBarLabel: "Home",
           tabBarIcon: () => (
-            <MaterialIcons name="home" size={24} className="bg-red-700" />
+            <MaterialIcons name="home" size={24} className="" />
           ),
         }}
       >
@@ -43,9 +32,7 @@ function MyTabs({ dates, image, submitHandler, navigation }) {
         name="Add"
         options={{
           tabBarLabel: "Add",
-          tabBarIcon: () => (
-            <MaterialIcons name="add" size={24} className="text-gray-700" />
-          ),
+          tabBarIcon: () => <MaterialIcons name="add" size={24} className="" />,
         }}
       >
         {(props) => (
@@ -125,22 +112,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      {/* <View style={tw`flex-1`}> */}
-      {/* <StatusBar /> */}
-      {/* <Header /> */}
-      {/* <View style={tw`p-3 bg-blue-100 flex-1 items-center`}>
-          <Home
-            dates={dates.sort((a, b) => {
-              return a.date > b.date;
-            })}
-            image={image}
-            submitHandler={submitHandler}
-          />
-        </View> */}
-      {/* </View> */}
       <MyTabs dates={dates} image={image} submitHandler={submitHandler} />
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({});

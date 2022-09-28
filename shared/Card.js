@@ -8,21 +8,9 @@ const Card = ({ item, image }) => {
   return (
     <TouchableOpacity>
       {/* CARD */}
-      <View className="bg-slate-700 rounded-xl m-3 h-60 shadow-lg">
+      <View className="bg-slate-500 rounded-xl m-3 h-60 shadow-lg">
         {/* CARD CONTENTS */}
-        {/* Image */}
-        {/* <View className="w-full"> */}
-        {/* <Image
-            className="w-full h-30 rounded-t-lg"
-            source={require("../assets/test.png")}
-          /> */}
-        {/* <Image
-            className="w-full h-30 rounded-t-lg"
-            source={require(image)}
-          /> */}
-        {/* <Image className="w-full h-30 rounded-t-lg" source={item.image} /> */}
         <Image className="w-full h-32 rounded-t-lg" source={item.img} />
-        {/* </View> */}
         {/* Text */}
         <View className="px-6 py-4">
           {/* Title */}
