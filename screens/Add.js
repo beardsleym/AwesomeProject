@@ -6,7 +6,7 @@ import AddDate from "../shared/AddDate";
 
 const Add = ({ submitHandler }) => {
   return (
-    <View style={tw`w-full flex-1`}>
+    <View style={tw`w-full flex-1 bg-gray-700`}>
       <AddDate submitHandler={submitHandler} />
     </View>
   );

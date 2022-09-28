@@ -8,7 +8,7 @@ dayjs.extend(relativeTime);
 const Card = ({ item, image }) => {
   return (
     <TouchableOpacity>
-      <View style={tw`w-full bg-white rounded-xl m-1 shadow-lg`}>
+      <View style={tw`bg-gray-500 rounded-xl m-3 shadow-lg`}>
         {/* CARD CONTENTS */}
         {/* Image */}
         <View style={tw`w-full`}>
@@ -26,13 +26,13 @@ const Card = ({ item, image }) => {
         {/* Text */}
         <View style={tw`px-6 py-4`}>
           {/* Title */}
-          <Text style={tw`text-gray-700 text-2xl mb-2`}>{item.title}</Text>
+          <Text style={tw`text-white text-2xl mb-2`}>{item.title}</Text>
           {/* Date */}
-          <Text style={tw`text-gray-500 text-base`}>
+          <Text style={tw`text-white text-base`}>
             {dayjs(item.date).format("D MMMM")}
           </Text>
           {/* Relative Time */}
-          <Text style={tw`text-gray-500 text-base`}>
+          <Text style={tw`text-white text-base`}>
             {dayjs(item.date).fromNow()}
           </Text>
         </View>

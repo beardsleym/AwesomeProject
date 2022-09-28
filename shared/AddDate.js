@@ -4,6 +4,7 @@ import {
   View,
   Text,
   Button,
+  Image,
   TouchableOpacity,
   TextInput,
   Keyboard,
@@ -12,12 +13,13 @@ import {
 import tw from "twrnc";
 import { MaterialIcons } from "@expo/vector-icons";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
+import * as ImagePicker from "expo-image-picker";
 
 const AddDate = ({ submitHandler }) => {
   const [title, setTitle] = useState("");
   // const [date, setDate] = useState("");
 
-  const [date, setDate] = useState(new Date(1598051730000));
+  const [date, setDate] = useState(new Date());
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
@@ -37,15 +39,29 @@ const AddDate = ({ submitHandler }) => {
     showMode("date");
   };
 
-  const showTimepicker = () => {
-    showMode("time");
-  };
-
   const handlePress = () => {
     if (title.length && date.length) {
       submitHandler(title, date);
       setTitle("");
       setDate("");
+    }
+  };
+
+  const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
     }
   };
 
@@ -76,6 +92,19 @@ const AddDate = ({ submitHandler }) => {
           <Button onPress={showDatepicker} title={date.toLocaleString()} />
           {/* <Button onPress={showTimepicker} title="Show time picker!" /> */}
           {/* <Text>selected: {date.toLocaleString()}</Text> */}
+        </View>
+        {/* IMAGE PICKER */}
+        <View style={tw`text-xs shadow-lg mb-2`}>
+          {/* <Button title="Pick an image from camera roll" onPress={pickImage}> */}
+          <MaterialIcons
+            style={tw`text-white mb-4 bg-purple-500 text-center`}
+            name="image"
+            size={36}
+            onPress={pickImage}
+          />
+          {/* </Button> */}
+
+          {image && <Image source={{ uri: image }} style={tw`w-full h-42`} />}
         </View>
         {/* Button */}
         <View style={tw`w-32 text-xs shadow-lg mb-16`}>

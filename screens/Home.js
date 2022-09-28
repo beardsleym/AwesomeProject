@@ -13,7 +13,7 @@ const Home = ({ dates, image, submitHandler }) => {
     setVisible(!visible);
   };
   return (
-    <View style={tw`w-full flex-1`}>
+    <View style={tw`w-full flex-1 bg-gray-700`}>
       {/* <Modal visible={visible} style={tw`p-8`}>
         <AddDate
           submitHandler={submitHandler}
