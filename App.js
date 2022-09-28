@@ -24,7 +24,11 @@ const Tab = createBottomTabNavigator();
 
 function MyTabs({ dates, image, submitHandler, navigation }) {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarStyle: { backgroundColor: "grey" },
+      }}
+    >
       <Tab.Screen
         name="Home"
         options={{
