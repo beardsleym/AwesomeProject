@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
-import tw from "twrnc";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
@@ -8,31 +7,32 @@ dayjs.extend(relativeTime);
 const Card = ({ item, image }) => {
   return (
     <TouchableOpacity>
-      <View style={tw`bg-gray-500 rounded-xl m-3 shadow-lg`}>
+      {/* CARD */}
+      <View className="bg-slate-700 rounded-xl m-3 h-60 shadow-lg">
         {/* CARD CONTENTS */}
         {/* Image */}
-        <View style={tw`w-full`}>
-          {/* <Image
-            style={tw`w-full h-30 rounded-t-lg`}
+        {/* <View className="w-full"> */}
+        {/* <Image
+            className="w-full h-30 rounded-t-lg"
             source={require("../assets/test.png")}
           /> */}
-          {/* <Image
-            style={tw`w-full h-30 rounded-t-lg`}
+        {/* <Image
+            className="w-full h-30 rounded-t-lg"
             source={require(image)}
           /> */}
-          {/* <Image style={tw`w-full h-30 rounded-t-lg`} source={item.image} /> */}
-          <Image style={tw`w-full h-30 rounded-t-lg`} source={item.img} />
-        </View>
+        {/* <Image className="w-full h-30 rounded-t-lg" source={item.image} /> */}
+        <Image className="w-full h-32 rounded-t-lg" source={item.img} />
+        {/* </View> */}
         {/* Text */}
-        <View style={tw`px-6 py-4`}>
+        <View className="px-6 py-4">
           {/* Title */}
-          <Text style={tw`text-white text-2xl mb-2`}>{item.title}</Text>
+          <Text className="text-white text-2xl mb-2">{item.title}</Text>
           {/* Date */}
-          <Text style={tw`text-white text-base`}>
+          <Text className="text-white text-base">
             {dayjs(item.date).format("D MMMM")}
           </Text>
           {/* Relative Time */}
-          <Text style={tw`text-white text-base`}>
+          <Text className="text-white text-base">
             {dayjs(item.date).fromNow()}
           </Text>
         </View>

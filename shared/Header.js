@@ -9,14 +9,11 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import tw from "twrnc";
 
 const Header = () => {
   return (
     <View>
-      <Text
-        style={tw`text-gray-900 font-bold text-2xl tracking-wider bg-blue-400 pt-10 pb-4 text-center`}
-      >
+      <Text className="text-gray-900 font-bold text-2xl tracking-wider bg-blue-400 pt-10 pb-4 text-center">
         COUNTDOWN
       </Text>
     </View>

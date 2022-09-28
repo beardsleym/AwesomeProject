@@ -13,7 +13,6 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import tw from "twrnc";
 import Header from "./shared/Header";
 import Home from "./screens/Home";
 import Add from "./screens/Add";
@@ -34,7 +33,7 @@ function MyTabs({ dates, image, submitHandler, navigation }) {
         options={{
           tabBarLabel: "Home",
           tabBarIcon: () => (
-            <MaterialIcons name="home" size={24} style={tw`text-gray-700`} />
+            <MaterialIcons name="home" size={24} className="bg-red-700" />
           ),
         }}
       >
@@ -45,7 +44,7 @@ function MyTabs({ dates, image, submitHandler, navigation }) {
         options={{
           tabBarLabel: "Add",
           tabBarIcon: () => (
-            <MaterialIcons name="add" size={24} style={tw`text-gray-700`} />
+            <MaterialIcons name="add" size={24} className="text-gray-700" />
           ),
         }}
       >
