@@ -24,7 +24,7 @@ function MyTabs({ dates, image, submitHandler, navigation }) {
           ),
         }}
       >
-        {(props) => <Home {...props} dates={dates} image={image} />}
+        {(props) => <Home {...props} dates={dates} />}
       </Tab.Screen>
       <Tab.Screen
         name="Add"
@@ -45,9 +45,9 @@ function MyTabs({ dates, image, submitHandler, navigation }) {
   );
 }
 
-const image = {
-  uri: "https://images.unsplash.com/photo-1606925595154-06943574f13c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-};
+// const image = {
+//   uri: "https://images.unsplash.com/photo-1606925595154-06943574f13c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+// };
 
 const data = [
   {
@@ -96,7 +96,8 @@ const data = [
 
 export default function App() {
   const [dates, setDates] = useState(data);
-  const submitHandler = (title, date) => {
+  const submitHandler = (title, date, image) => {
+    console.log(title, date, image);
     const newDate = {
       id: Math.random(),
       img: image,
@@ -110,7 +111,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <MyTabs dates={dates} image={image} submitHandler={submitHandler} />
+      <MyTabs dates={dates} submitHandler={submitHandler} />
     </NavigationContainer>
   );
 }

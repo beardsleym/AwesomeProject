@@ -10,7 +10,16 @@ const Card = ({ item, image }) => {
       {/* CARD */}
       <View className="bg-slate-500 rounded-xl m-3 h-60 shadow-lg">
         {/* CARD CONTENTS */}
-        <Image className="w-full h-32 rounded-t-lg" source={item.img} />
+        {/* DEV - selected image */}
+        {typeof item.img == "string" ? (
+          <Image
+            className="w-full h-32 rounded-t-lg"
+            source={{ uri: item.img }}
+          />
+        ) : (
+          <Image className="w-full h-32 rounded-t-lg" source={item.img} />
+        )}
+
         {/* Text */}
         <View className="px-6 py-4">
           {/* Title */}

@@ -39,8 +39,8 @@ const AddDate = ({ submitHandler }) => {
   };
 
   const handlePress = () => {
-    if (title.length && date) {
-      submitHandler(title, date);
+    if (title.length && date && image.length) {
+      submitHandler(title, date, image);
       setTitle("");
       setDate(new Date());
     }
