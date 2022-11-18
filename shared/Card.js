@@ -19,18 +19,18 @@ const Card = ({ item, image }) => {
         ) : (
           <Image className="w-full h-32 rounded-t-lg" source={item.img} />
         )}
-
         {/* Text */}
         <View className="px-6 py-4">
           {/* Title */}
           <Text className="text-white text-2xl mb-2">{item.title}</Text>
           {/* Date */}
           <Text className="text-white text-base">
-            {dayjs(item.date).format("D MMMM")}
+            {dayjs(item.date.toDate()).format("D MMMM")}
+            {/* {item.date.toDate().toLocaleTimeString("en-US")} */}
           </Text>
           {/* Relative Time */}
           <Text className="text-white text-base">
-            {dayjs(item.date).fromNow()}
+            {dayjs(item.date.toDate()).fromNow()}
           </Text>
         </View>
       </View>
